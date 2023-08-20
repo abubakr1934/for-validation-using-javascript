@@ -30,8 +30,8 @@ function validateForm() {
       isValid = false;
     }
   
-    var mobileRegex = /^[789]\d{9}$/;
-    if (!mobileNumber.match(mobileRegex)) {
+    var mobileRegex = /^[0-9]+$/;
+    if (mobileNumber.length==10 && mobileNumber.match(mobileRegex)) {
       errorMessages +=
         "Mobile number must be 10 digits and start with 7, 8, or 9.\n";
       isValid = false;
@@ -48,20 +48,20 @@ function validateForm() {
     }
   
     // Educational Information Validation
-    if (xMarks === "") {
+    if (xMarks === ""|| xMarks===NULL) {
       errorMessages += "X Marks is mandatory.\n";
       isValid = false;
     }
   
-    if (xiiMarks === "") {
+    if (xiiMarks === ""|| xiiMarks===NULL) {
       errorMessages += "XII Marks is mandatory.\n";
       isValid = false;
     }
   
     // Payment Details Validation
     if (paymentMethod === "card") {
-      var cardRegex = /^\d{16}$/;
-      if (!cardNumber.match(cardRegex)) {
+      var cardRegex = /^[0-9]$/;
+      if (cardNumber.length!=16 ||!cardNumber.match(cardRegex)) {
         errorMessages += "Invalid card number.\n";
         isValid = false;
       }
